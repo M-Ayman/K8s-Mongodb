@@ -1,0 +1,17 @@
+# Create PersistentVolume
+# change the ip of NFS server
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-persistent-storage
+  labels:
+    app: mongodb
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 172.31.39.63
+    # Exported path of your NFS server
+    path: "/mongodb"
